@@ -7,3 +7,8 @@ export async function login(req: Request, res: Response) {
   const token = await authService.login(LoginUser);
   res.status(200).send({ token });
 }
+
+export async function createUser(req: Request, res: Response) {
+  const user = await authService.createUser(req.body);
+  res.status(201).send(user);
+}
