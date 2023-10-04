@@ -7,21 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  sessions Sessions[]
   @@map("users")
-}
-model Sessions {
-  id        Int      @id @default(autoincrement())
-  user    Users    @relation(fields: [userId], references: [id])
-  userId    Int
-  token     String
-  createdAt DateTime @default(now())
-  @@map("sessions")
 }
