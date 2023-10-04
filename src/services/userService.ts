@@ -25,7 +25,7 @@ async function getUserOrFail(login: LoginUser) {
   if (!user) throw unauthorizedError('Invalid credentials');
 
   const isPasswordValid = bcrypt.compareSync(login.password, user.password);
-  if (!isPasswordValid) throw unauthorizedError('Invalid credentials');
+  if (!isPasswordValid) throw unauthorizedError('Invalid credentials, password mismatch');
 
   return user;
 }
