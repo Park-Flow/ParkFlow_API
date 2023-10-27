@@ -16,3 +16,11 @@ export const findCardByNumber = async (number: string) => {
         },
     });
 };
+
+export const getAllCardsByUser = async (userId: number) => {
+    return await prisma.card.findMany({
+        where: {
+            userId,
+        }
+    })
+}
