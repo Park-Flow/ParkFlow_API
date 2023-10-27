@@ -3,7 +3,7 @@ import * as cardService from '../services/cardService.js';
 
 export async function createCardData(req: Request, res: Response) {
   let dataCard = req.body;
-  const userId = Number(res.locals.user.id)
+  const userId = Number(res.locals.user.userId)
   dataCard = {...dataCard, userId}
   const card = await cardService.createCard(dataCard);
   res.status(201).send(card);
